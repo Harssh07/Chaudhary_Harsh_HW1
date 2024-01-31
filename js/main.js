@@ -39,8 +39,7 @@
     }
   
     function downloadAndStoreImage(imageUrl, imageName) {
-      // Implement code to download and store the image
-      // Placeholder - you need to implement this part based on your requirements
+      
     }
   
     function displaySpinner(element) {
