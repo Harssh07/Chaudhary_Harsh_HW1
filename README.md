@@ -21,3 +21,19 @@
 -Displays an unordered list of 10 or more characters.
 
 -Each list item contains a character name acting as a link to the movies they were in.
+
+#### 2.Movie details:
+-Separate section displays movie title, opening crawl, and movie poster upon clicking a character link.
+
+-Movie poster images sourced and stored in the "images" folder.
+
+#### 3.REsponsive design:
+-Responsive layout ensures a seamless experience from mobile to desktop.
+
+#### 4.  Greensock enhancements:
+- Utilizes GreenSock for enhanced animations and transitions.
+
+#### 5.AJAX request handling:
+-Separate functions/handlers for each stage of an AJAX request (loading, success, failure).
+
+-Graceful handling of potential failures in the AJAX request process.
