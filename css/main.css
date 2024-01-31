@@ -1,44 +1,55 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f5f5f5;
   }
   
-  h1 {
-    text-align: center;
+  .grid-con {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+  }
+  
+  .col-span-full {
+    grid-column: span 2;
+  }
+  
+  #character-box,
+  #movie-box {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+  }
+  
+  h2 {
     color: #333;
   }
   
   #character-list {
     list-style-type: none;
     padding: 0;
-    margin: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    margin: 0;
   }
   
-  li {
+  #character-list li {
     background-color: #fff;
     border: 1px solid #ddd;
-    margin: 10px;
     padding: 10px;
+    margin: 5px 0;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s; /* Adding transition effect for both background and color */
   }
   
-  li:hover {
+  #character-list li:hover {
     background-color: #e0e0e0;
+    color: #333; /* Change text color on hover */
   }
   
   #movie-info {
-    display: none;
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
+    margin-top: 20px;
   }
   
   #movie-title {

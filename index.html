@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title> Starwars movie/character movie </title>
+    <title>Trial</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,22 +14,28 @@
   <body>
     <div class="grid-con">
       <section class="col-span-full m-col-span-6" id="character-box"> 
-        <h2> character </h2>
+        <h2> Star Wars Character </h2>
+        <ul id="character-list"></ul>
       </section>
       <section class="col-span-full m-col-span-6" id="movie-box">
-        <h2> movies </h2>
-        <div id="review-con">
-          <template id="movie-template">
-            <section>
-             <h3 class="movie-heading"> </h3>
-             <p class="movie-author"></p>
-             <p class="movie-description"></p>
-            </section>
-         </template>
-          <!--template will be inserted here-->
-        </div>
-        
+        <h2> Star Wars Movies </h2>
+        <div id="movie-info">
+            <h2 id="movie-title"></h2>
+            <p id="opening-crawl"></p>
+            <img id="movie-poster" src="" alt="Movie Poster">
+          </div>
+        <div id="movie-con"></div>
+       
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="script.js"></script>
+       
       </section>
     </div>  
   </body>
 </html>
+
+
+
+
+

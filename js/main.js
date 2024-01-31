@@ -1,65 +1,78 @@
-(() => {
-    const moviebox = document.querySelector("#movie-box");
-    const reviewtemplate = document.querySelector("#review-template");
-    const reviewCon = document.querySelector("#review-con");
-    const baseUrl = 'https://search.imdbot.workers.dev/';
+document.addEventListener("DOMContentLoaded", () => {
+
+    const characterList = document.getElementById("character-list");
+    const movieInfo = document.getElementById("movie-info");
+    const movieTitle = document.getElementById("movie-title");
+    const openingCrawl = document.getElementById("opening-crawl");
+    const moviePoster = document.getElementById("movie-poster");
+    const baseUrl = "https://swapi.dev/api/";
   
-    function getMovies() {
-      fetch(`${baseUrl}?q=thor`)
-        .then(response => response.json())
-        .then(function (response) {
-          const movies = response.description;
-          const ul = document.createElement('ul');
-          movies.forEach(movie => {
-            const li = document.createElement('li');
-            const a = document.createElement('a');
-            const img = document.createElement('img'); // Add image element
+    // Function to make AJAX call to SWAPI for movie details
+    const getMovieDetails = async (movieUrl) => {
+      try {
+        const response = await fetch(movieUrl);
+        const data = await response.json();
   
-            a.textContent = movie['#TITLE'];
-            a.dataset.review = movie['#IMDB_ID'];
+        // Update movie information on the page
+        movieTitle.textContent = data.title;
+        openingCrawl.textContent = data.opening_crawl;
   
-            // Set up image source dynamically
-            img.src = `images/${movie['#IMDB_ID']}.jpg`; // Assuming your images are named with IMDB_ID
+        // Extract episode ID from the movie URL
+        const episodeId = movieUrl.split("/")[5];
+        moviePoster.src = `images/img-${episodeId}.jpg`;
   
-            li.appendChild(a);
-            li.appendChild(img); // Append the image to the list item
+      } catch (error) {
+        console.error("Error fetching movie details:", error);
+      }
+    };
   
-            ul.appendChild(li);
-          });
+    // Function to make AJAX call to SWAPI for character details
+    const getCharacterDetails = async (characterUrl) => {
+      try {
+        const response = await fetch(characterUrl);
+        const data = await response.json();
   
-          moviebox.appendChild(ul);
-        })
-        .then(function () {
-          const links = document.querySelectorAll('#movie-box li a');
-          links.forEach(link => {
-            link.addEventListener("click", getReview);
-          })
-        })
-        .catch(error => {
-          console.log(error);
+        // Log movie URL before making the getMovieDetails call
+        console.log("Movie URL:", data.films[0]);
+  
+        // Create a list item for each character
+        const listItem = document.createElement("li");
+        listItem.textContent = data.name;
+  
+        // Add a click event to each character link
+        listItem.addEventListener("click", () => {
+          // Make an AJAX call to get movie details when character link is clicked
+          getMovieDetails(data.films[0]); // Assuming the character is in the first film
+          // Show the movie information section
+          movieInfo.style.display = "block";
         });
-    }
   
-    function getReview(e) {
-      const reviewID = e.currentTarget.dataset.review;
+        // Append the list item to the character list
+        characterList.appendChild(listItem);
   
-      fetch(`${baseUrl}?tt=${reviewID}`)
-        .then(response => response.json())
-        .then(function (response) {
-          reviewCon.innerHTML = "";
+      } catch (error) {
+        console.error("Error fetching character details:", error);
+      }
+    };
   
-          const template = document.importNode(reviewtemplate.content, true);
+    // Make an initial AJAX call to SWAPI to get a list of characters
+    const getCharacters = async () => {
+      try {
+        const response = await fetch(`${baseUrl}people/`);
+        const data = await response.json();
   
-          const reviewBody = template.querySelector(".review-description");
-          reviewBody.innerHTML = response.short.review.reviewBody;
+        // Loop through each character and get details
+        for (const character of data.results) {
+          await getCharacterDetails(character.url);
+        }
   
-          reviewCon.appendChild(template);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
+      } catch (error) {
+        console.error("Error fetching character list:", error);
+      }
+    };
   
-    getMovies();
-  })();
+    // Initial call to get characters
+    getCharacters();
+  
+  });
   
