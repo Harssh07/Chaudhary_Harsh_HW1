@@ -59,25 +59,4 @@ body {
     height: auto;
   }
   
-  /* Responsive styles for smaller screens */
-  @media screen and (max-width: 767px) {
-    #movie-box,
-    #review-box,
-    #review-template section {
-      padding: 15px;
-    }
-  
-    h2 {
-      font-size: 20px;
-    }
-  
-    .review-heading {
-      font-size: 18px;
-    }
-  
-    .review-author,
-    .review-description {
-      font-size: 14px;
-    }
-  }
-  
+ 
