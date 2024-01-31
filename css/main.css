@@ -1,69 +1,83 @@
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Ubuntu', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
   }
   
   .grid-con {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
     max-width: 1200px;
-    margin: 20px auto;
-  }
-  
-  .col-span-full {
-    grid-column: span 2;
-  }
-  
-  #character-box,
-  #movie-box {
-    background-color: #fff;
+    margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ddd;
+  }
+  
+  #movie-box,
+  #review-box {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
   }
   
   h2 {
+    color: #5c01a2;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+  
+  #review-template section {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .review-heading {
+    color: #5c01a2;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .review-author {
     color: #333;
+    font-size: 16px;
+    margin-bottom: 5px;
   }
   
-  #character-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  #character-list li {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin: 5px 0;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s; /* Adding transition effect for both background and color */
-  }
-  
-  #character-list li:hover {
-    background-color: #e0e0e0;
-    color: #333; /* Change text color on hover */
-  }
-  
-  #movie-info {
-    margin-top: 20px;
-  }
-  
-  #movie-title {
-    color: #333;
-  }
-  
-  #opening-crawl {
-    margin-top: 10px;
+  .review-description {
     color: #555;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
   }
   
-  #movie-poster {
+  .movie-poster-container {
     max-width: 100%;
-    margin-top: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    height: auto;
+  }
+  
+  /* Responsive styles for smaller screens */
+  @media screen and (max-width: 767px) {
+    #movie-box,
+    #review-box,
+    #review-template section {
+      padding: 15px;
+    }
+  
+    h2 {
+      font-size: 20px;
+    }
+  
+    .review-heading {
+      font-size: 18px;
+    }
+  
+    .review-author,
+    .review-description {
+      font-size: 14px;
+    }
   }
   
